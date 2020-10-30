@@ -1,13 +1,13 @@
 Name:           b43-tools
 Version:        019
-Release:        3
+Release:        4
 Summary:        Tools for the Broadcom 43xx series WLAN chip
 License:        GPLv2 and GPLv2+ and GPLv3
 URL:            https://bues.ch/cgit/b43-tools.git
 Source0:        https://bues.ch/cgit/b43-tools.git/snapshot/b43-tools-b43-fwcutter-019.tar.xz
-BuildRequires:  bison flex flex-static python2-devel
+BuildRequires:  bison flex flex-static python3-devel
 Patch0001:      0001-b43-tools-fix-format-security-errors.patch
-
+Patch0002:      0002-Explicitly-use-python3.patch
 
 %description
 Tools for the Broadcom 43xx series WLAN chip.
@@ -23,12 +23,14 @@ install -p -m 0644 ssb_sprom/README README.ssb_sprom
 install -p -m 0644 ssb_sprom/COPYING COPYING.ssb_sprom
 install -p -m 0644 debug/install.py debug/setup.py
 
+2to3 -w .
+
 %build
 CFLAGS="%{optflags}" %make_build -C assembler
 CFLAGS="%{optflags}" %make_build -C disassembler
 CFLAGS="%{optflags}" %make_build -C ssb_sprom
 cd debug
-%py2_build
+%py3_build
 
 %install
 install -d %{buildroot}%{_bindir}
@@ -40,14 +42,17 @@ install -p -m 0755 disassembler/brcm80211-fwconv %{buildroot}%{_bindir}
 install -p -m 0755 disassembler/brcm80211-ivaldump %{buildroot}%{_bindir}
 install -p -m 0755 ssb_sprom/ssb-sprom %{buildroot}%{_bindir}
 cd debug
-%py2_install
+%py3_install
 
 %files
 %doc README.* COPYING.*
 %{_bindir}/*
-%{python2_sitelib}/*
+%{python3_sitelib}/*
 
 %changelog
+* Tue Oct 27 2020 leiju<leiju4@huawei.com> - 019-4
+- Modify BuildRequires from python2-devel to python3-devel
+
 * Thu Jan 16 2020 sunguoshuai<sunguoshuai@huawei.com> - 019-3
 - Change tar packages.
 
