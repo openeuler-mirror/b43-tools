@@ -1,11 +1,11 @@
 Name:           b43-tools
 Version:        019
-Release:        5
+Release:        6
 Summary:        Tools for the Broadcom 43xx series WLAN chip
 License:        GPLv2 and GPLv2+ and GPLv3 and BSD-2-Clause and Public Domain
 URL:            https://bues.ch/cgit/b43-tools.git
 Source0:        https://bues.ch/cgit/b43-tools.git/snapshot/b43-tools-b43-fwcutter-019.tar.xz
-BuildRequires:  bison flex flex-static python3-devel
+BuildRequires:  bison flex flex-static python3-devel gcc
 Patch0001:      0001-b43-tools-fix-format-security-errors.patch
 Patch0002:      0002-Explicitly-use-python3.patch
 
@@ -50,6 +50,9 @@ cd debug
 %{python3_sitelib}/*
 
 %changelog
+* Mon May 31 2021 baizhonggui <baizhonggui@huawei.com> - 019-6
+- Add gcc in BuildRequires
+
 * Tue Jan 5 2021 Ge Wang<wangge20@huawei.com> - 019-5
 - Modify license information
 
