@@ -1,0 +1,31 @@
+diff -up b43-tools-b43-fwcutter-019/assembler/Makefile.orig b43-tools-b43-fwcutter-019/assembler/Makefile
+--- b43-tools-b43-fwcutter-019/assembler/Makefile.orig	2023-04-14 17:57:15.364761457 +0800
++++ b43-tools-b43-fwcutter-019/assembler/Makefile	2023-04-14 17:57:38.824863305 +0800
+@@ -1,5 +1,5 @@
+ # The toolchain definitions
+-CC		= gcc
++CC		?= gcc
+ LEX		= flex
+ YACC		= bison
+ SPARSE		= sparse
+diff -up b43-tools-b43-fwcutter-019/disassembler/Makefile.orig b43-tools-b43-fwcutter-019/disassembler/Makefile
+--- b43-tools-b43-fwcutter-019/disassembler/Makefile.orig	2023-04-14 17:57:15.368761475 +0800
++++ b43-tools-b43-fwcutter-019/disassembler/Makefile	2023-04-14 17:57:52.608923148 +0800
+@@ -1,5 +1,5 @@
+ # The toolchain definitions
+-CC		= gcc
++CC		?= gcc
+ SPARSE		= sparse
+ 
+ V		= @		# Verbose build:  make V=1
+diff -up b43-tools-b43-fwcutter-019/fwcutter/Makefile.orig b43-tools-b43-fwcutter-019/fwcutter/Makefile
+diff -up b43-tools-b43-fwcutter-019/ssb_sprom/Makefile.orig b43-tools-b43-fwcutter-019/ssb_sprom/Makefile
+--- b43-tools-b43-fwcutter-019/ssb_sprom/Makefile.orig	2023-04-14 17:57:15.372761492 +0800
++++ b43-tools-b43-fwcutter-019/ssb_sprom/Makefile	2023-04-14 17:58:02.344965413 +0800
+@@ -1,5 +1,5 @@
+ # The toolchain definitions
+-CC		= cc
++CC		?= cc
+ SPARSE		= sparse
+ 
+ V		= @		# Verbose build:  make V=1
